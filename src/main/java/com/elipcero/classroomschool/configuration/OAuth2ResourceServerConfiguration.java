@@ -19,6 +19,7 @@ public class OAuth2ResourceServerConfiguration extends ResourceServerConfigurerA
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                    .antMatchers("/health").permitAll()
                     .mvcMatchers(HttpMethod.GET, "/classCalendars").hasRole("USER")
                     .mvcMatchers(HttpMethod.POST, "/customerClasses").hasRole("USER")
                     .mvcMatchers(HttpMethod.DELETE, "customerClasses/{customerId}/{classId}").hasRole("USER")
